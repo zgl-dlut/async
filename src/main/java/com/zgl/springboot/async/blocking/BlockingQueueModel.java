@@ -30,8 +30,8 @@ public class BlockingQueueModel implements Model{
 		public void produce() throws InterruptedException {
 			Thread.sleep(1000 + (long) (Math.random() * 1000));
 			Task task = new Task(taskNo.getAndIncrement());
-			queue.put(task);
 			System.out.println("produce: " + task.no);
+			queue.put(task);
 		}
 
 		@Override
@@ -55,11 +55,11 @@ public class BlockingQueueModel implements Model{
 	}
 
 	public static void main(String[] args) {
-		Model model = new BlockingQueueModel(5);
-		for (int i = 0; i < 5; i++) {
+		Model model = new BlockingQueueModel(3);
+		for (int i = 0; i < 2; i++) {
 			new Thread(model.newRunnableProducer()).start();
 		}
-		for (int i = 0; i < 2; i++) {
+		for (int i = 0; i < 5; i++) {
 			new Thread(model.newRunnableConsumer()).start();
 		}
 	}
