@@ -1,4 +1,4 @@
-package com.zgl.springboot.async.thread;
+package com.zgl.springboot.async.demo;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

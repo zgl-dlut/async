@@ -1,4 +1,4 @@
-package com.zgl.springboot.async.thread;
+package com.zgl.springboot.async.demo;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
