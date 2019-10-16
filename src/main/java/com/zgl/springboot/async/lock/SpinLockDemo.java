@@ -19,7 +19,7 @@ public class SpinLockDemo {
 		Thread thread = Thread.currentThread();
 		System.out.println(Thread.currentThread().getName() + "\t come in hiahia");
 		while (!atomicReference.compareAndSet(null, thread)) {
-
+			System.out.println(thread.getName() + "\t waiting!!!!!");
 		}
 	}
 

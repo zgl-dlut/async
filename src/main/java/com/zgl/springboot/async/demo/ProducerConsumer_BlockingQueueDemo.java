@@ -33,8 +33,8 @@ public class ProducerConsumer_BlockingQueueDemo {
 			}
 		}, "consumer").start();
 
-		TimeUnit.SECONDS.sleep(5);
-		System.out.println("5秒种时间到, 大老板main叫停,活动结束");
+		TimeUnit.SECONDS.sleep(10);
+		System.out.println("10秒种时间到, 大老板main叫停,活动结束");
 		myResource.stop();
 	}
 }

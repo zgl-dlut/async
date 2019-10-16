@@ -12,7 +12,7 @@ public class ContainerNotSafeDemo {
 	 * 集合类不安全的问题ArrayList HashSet HashMap
 	 */
 	public static void main(String[] args) {
-
+		ListNotSafe();
 	}
 
 	/**
@@ -21,9 +21,9 @@ public class ContainerNotSafeDemo {
 	public static void ListNotSafe() {
 		List<String> list =
 				/*new Vector<>()*/
-				/*new ArrayList<>()*/
+				new ArrayList<>()
 				/*Collections.synchronizedList(new ArrayList<>())*/
-				new CopyOnWriteArrayList<>();
+				/*new CopyOnWriteArrayList<>()*/;
 		for (int i = 0; i < 30; i++) {
 			new Thread(() -> {
 				list.add(UUID.randomUUID().toString().substring(0, 8));
@@ -53,7 +53,7 @@ public class ContainerNotSafeDemo {
 		 *
 		 * 4 优化建议
 		 * */
-		List<Integer> integerList =new ArrayList<>();
+		/*List<Integer> integerList =new ArrayList<>();
 		integerList.add(1);
 		integerList.add(2);
 		integerList.add(3);
@@ -62,8 +62,8 @@ public class ContainerNotSafeDemo {
 			Integer integer = (Integer) iterator.next();
 			if (integerList.contains(3)) {
 				integerList.remove(3);
-				/*iterator = integerList.listIterator();*/
+				*//*iterator = integerList.listIterator();*//*
 			}
-		}
+		}*/
 	}
 }
