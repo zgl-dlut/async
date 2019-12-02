@@ -23,8 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class VolatileDemo {
 	public static void main(String[] args) {
-		seeOkByVolatile();
-		//atomicNotOkByVolatile();
+		//seeOkByVolatile();
+		atomicNotOkByVolatile();
 	}
 
 	/**
@@ -35,7 +35,8 @@ public class VolatileDemo {
 		for (int i = 0 ; i < 20; i++) {
 			new Thread(() -> {
 				for (int j = 0; j < 1000; j++) {
-					myData.addMyAtomic();
+					//myData.addMyAtomic();
+					myData.addPlusPlus();
 				}
 			}, String.valueOf(i)).start();
 		}
@@ -46,7 +47,8 @@ public class VolatileDemo {
 		while (Thread.activeCount() > 2) {
 			Thread.yield();
 		}
-		System.out.println(Thread.currentThread().getName() + "\t finally number value :" + myData.atomicInteger.get());
+		//System.out.println(Thread.currentThread().getName() + "\t finally number value :" + myData.atomicInteger.get());
+		System.out.println(Thread.currentThread().getName() + "\t finally number value :" + myData.number);
 	}
 
 
@@ -84,7 +86,7 @@ class MyData  //MyData.java ===> MyData.class  ===> JVM字节码
 	/**
 	 * 此时number前面加上了volatile关键字了
 	 */
-	public /*synchronized*/ void addPlusPlus() {
+	public synchronized void addPlusPlus() {
 		number++;
 	}
 
