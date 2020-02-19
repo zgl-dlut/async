@@ -84,6 +84,7 @@ class MyResource {
 				System.out.println(Thread.currentThread().getName() + "\t 超过2秒钟没有取到,消费动作结束");
 				return;
 			}
+			TimeUnit.SECONDS.sleep(3);
 			System.out.println(Thread.currentThread().getName() + "\t 消费队列" + result + "成功");
 		}
 	}
