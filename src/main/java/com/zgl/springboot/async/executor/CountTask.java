@@ -24,6 +24,7 @@ public class CountTask extends RecursiveTask<Integer> {
 	protected Integer compute() {
 		int sum = 0;
 		boolean canCompute = (end - start) <= THRESHOLD;
+		System.out.println(Thread.currentThread().getName());
 		if (canCompute) {
 			for (int i = start; i <= end; i++) {
 				sum += i;
@@ -43,7 +44,7 @@ public class CountTask extends RecursiveTask<Integer> {
 
 	public static void main(String[] args) {
 		ForkJoinPool forkJoinPool = new ForkJoinPool();
-		CountTask countTask = new CountTask(1, 10);
+		CountTask countTask = new CountTask(1, 100);
 		Future<Integer> result = forkJoinPool.submit(countTask);
 		try {
 			System.out.println(result.get());
